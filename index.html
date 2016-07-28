@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="time your ogre spawns in bdo">
+    <meta name="author" content="kviktor">
+    <link rel="icon" href="static/favicon.png">
+
+    <title>Ogre Timer</title>
+
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+    <link href="static/font-awesome.min.css" rel="stylesheet">
+    <link href="static/ogre.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <a class="navbar-brand" href="#">Ogre Timer</a>
+      <li class="nav-item">
+      <ul class="nav navbar-nav pull-right">
+      <a id="enc" class="nav-link" href="static/forher.png">
+        Encouragement
+      </a>
+      </li>
+    </ul>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <a href="#" id="add-timer" class="btn btn-sm btn-info">
+            <i class="fa fa-plus"></i>
+            Add new location
+          </a>
+          <a href="#" id="reset-all" class="btn btn-sm btn-warning">
+            <i class="fa fa-refresh"></i>
+            Reset all
+          </a>
+
+          <div id="timer-container"></div>
+        </div>
+        <div class="col-md-7">
+          <img class="img img-rounded img-fluid" src="static/spawn.png"/>
+          <div class="text-xs-center">
+            <small class="text-muted">
+              Source: 
+              <a href="http://forum.blackdesertonline.com/index.php?/topic/77058-ogre-spawn-map-with-screenshots/">
+                http://forum.blackdesertonline.com/index.php?/topic/77058-ogre-spawn-map-with-screenshots/
+              </a>
+              <!-- i'm like 75% sure this map is not accurate tho -->
+            </small>
+          </div>
+        </div><!-- /.col-md-7 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <div id="forher-bg">
+      <img src="static/forher.png">
+    </div>
+
+
+    <script src="static/jquery.min.js"></script>
+    <script src="static/dot.min.js"></script>
+    <script src="static/ogre.js"></script>
+  </body>
+</html>
