@@ -1,0 +1,4 @@
+*.swp
+*.swo
+# why not ...
+*.pyc
