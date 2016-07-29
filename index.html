@@ -39,9 +39,20 @@
             Reset all
           </a>
 
+          <div class="input-group input-group-sm pull-right" style="max-width: 85px;">
+            <span class="input-group-addon">
+              <input type="checkbox" id="toggle-notifications"/>
+            </span>
+            <input id="notification-margin" type="number" min="0" max="10" class="form-control" value="5">
+          </div>
+
           <div id="timer-container"></div>
         </div>
         <div class="col-md-7">
+          <small class="text-muted">
+            By enabling the checkbox you can receive a notification before a timer reachers 15 minutes. 
+          </small>
+
           <img class="img img-rounded img-fluid" src="static/spawn.png"/>
           <div class="text-xs-center">
             <small class="text-muted">

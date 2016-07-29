@@ -21,20 +21,26 @@ function formatTime(time) {
   ms = diff % 1000;
   return pad(minute, 2) + ":" + pad(second, 2) + ":" + pad(ms, 3);
 }
+
 var _manager = function() {
   var timers = [];
   var latestTimerID = -1;
+  var notificationMargin = -1;
+  var notifications = false;
 
   this.addTimer = function() {
     latestTimerID += 1;
 
+    var name = names[Math.floor(Math.random() * names.length)];
     timers.push({
-      'start': 0,
-      'id': latestTimerID
+      'name': name,
+      'start': undefined,
+      'id': latestTimerID,
+      'notified': false,
     });
 
     $("#timer-container").append(tmpl({
-      'name': names[Math.floor(Math.random() * names.length)],
+      'name': name,
       'id': latestTimerID, 
     }));
   };
@@ -42,26 +48,39 @@ var _manager = function() {
   this.start = function(id) {
     $("#btn-" + id).removeClass("btn-success").addClass("btn-primary")
     .html('<i class="fa fa-refresh"></i> Reset');
-    timers[id].start = new Date().getTime();
+    timers[id].start = new Date().getTime() - 5 * 60 * 1000 + 10 * 1000;
 
   };
 
   this.reset = function(id) {
-    timers[id].start = new Date().getTime();
+    this.start(id); // we get the reset button this way
+    timers[id].notified = false;
   };
 
   this.resetAll = function() {
     for(var i=0; i<timers.length; i++) {
       this.reset(i);
     }
-  }
+  };
 
   this.update = function() {
+    var now = new Date().getTime();
     for(var i=0; i<timers.length; i++) {
       if(timers[i].start) {
         $("#timer-" + i).text(formatTime(timers[i].start));
       }
+      var d = now - timers[i].start > ((15 * 60 * 1000) - (notificationMargin * 60 * 1000));
+      if(notifications && !timers[i].notified && d) {
+        var options = {icon: "static/favicon.png"};
+        var notification = new Notification(timers[i].name, options);
+        timers[i].notified = true;
+      }
     }
+  };
+
+  this.toggleNotifications = function(val) {
+    notifications = !notifications;
+    notificationMargin = val;
   };
 };
 
@@ -96,6 +115,19 @@ $(function() {
   $("#forher-bg").click(function() {
     $(this).hide();
   });
+
+
+  var notificationStatus;
+  $("#toggle-notifications").click(function() {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission().then(function(result) {
+        notificationStatus = result;
+      });
+    }
+    manager.toggleNotifications($("#notification-margin").val());
+  });
+
+
 });
 
 
