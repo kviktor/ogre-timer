@@ -48,8 +48,7 @@ var _manager = function() {
   this.start = function(id) {
     $("#btn-" + id).removeClass("btn-success").addClass("btn-primary")
     .html('<i class="fa fa-refresh"></i> Reset');
-    timers[id].start = new Date().getTime() - 5 * 60 * 1000 + 10 * 1000;
-
+    timers[id].start = new Date().getTime();
   };
 
   this.reset = function(id) {
