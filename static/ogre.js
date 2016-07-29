@@ -41,7 +41,7 @@ var _manager = function() {
 
     $("#timer-container").append(tmpl({
       'name': name,
-      'id': latestTimerID, 
+      'id': latestTimerID,
     }));
   };
 
@@ -84,7 +84,7 @@ var _manager = function() {
   };
 };
 
-var manager = new _manager(); 
+var manager = new _manager();
 
 $(function() {
   manager.addTimer();
@@ -96,7 +96,7 @@ $(function() {
     else
       manager.reset($(this).data("id"));
   });
-  
+
   $("#add-timer").click(function() {
     manager.addTimer();
     return false;
@@ -134,14 +134,14 @@ $(function() {
 var tmpl = doT.template(
     '<div class="input-group input-group-sm timer">' +
     '  <input type="text" value="{{=it.name }}" class="form-control btn-sm">' +
-    '  <span class="input-group-addon" id="timer-{{=it.id}}">' + 
-    '     00:00:000' + 
-    '  </span>' + 
-    '  <span class="input-group-btn">' + 
-    '    <button id="btn-{{=it.id }}" data-id="{{=it.id }}" class="btn-start btn btn-sm btn-success" type="button">' + 
+    '  <span class="input-group-addon" id="timer-{{=it.id}}">' +
+    '     00:00:000' +
+    '  </span>' +
+    '  <span class="input-group-btn">' +
+    '    <button id="btn-{{=it.id }}" data-id="{{=it.id }}" class="btn-start btn btn-sm btn-success" type="button">' +
     '      <i class="fa fa-play"></i>' +
-    '      Start' + 
-    '    </button>' + 
-    '  </span>' + 
+    '      Start' +
+    '    </button>' +
+    '  </span>' +
     '</div>'
 );
