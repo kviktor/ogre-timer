@@ -17,7 +17,7 @@ function formatTime(time) {
   diff = new Date().getTime() - time;
 
   minute = Math.floor(diff / (60 * 1000)) ;
-  second = Math.floor(diff / 1000);
+  second = Math.floor((diff % (60 * 1000)) / 1000);
   ms = diff % 1000;
   return pad(minute, 2) + ":" + pad(second, 2) + ":" + pad(ms, 3);
 }
